@@ -2,7 +2,7 @@ const fs = require('fs')
 const { json } = require('stream/consumers')
 
 // funcao get -- retorna todos os games da base Json
-const getAllGames = (req, res) => {
+const getAllFavorites = (req, res) => {
     const games = JSON.parse(fs.readFileSync("favoritos.json"))
     return games
 }
@@ -10,12 +10,10 @@ const getAllGames = (req, res) => {
 const deleteFavorite = (id) => {
     const games = JSON.parse(fs.readFileSync("favoritos.json"))
     const filteredGames = games.filter(game => game.id !== id)
-    const writeValue = fs.writeFileSync('favoritos.json', JSON.stringify(filteredGames))
-
-    return 
+    fs.writeFileSync('favoritos.json', JSON.stringify(filteredGames))
 }
 
-const addFavorite = (game) => {
-    const games = JSON.parse(fs.readFileSync("favoritos.json"))
+module.exports = {
+    getAllFavorites,
+    deleteFavorite
 }
-
