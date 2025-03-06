@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const rotaGames = require('./routes/games')
-const cors = require('cors')
 const rotaFavoritos = require('./routes/favoritos')
+const cors = require('cors')
 
 app.use(express.json())
 app.use(cors({origin:"*"}))
